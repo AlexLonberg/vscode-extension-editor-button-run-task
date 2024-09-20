@@ -5,7 +5,7 @@
 
 ![](assets/button-run-task-1.jpg)
 
-Установите расширение и настройте задачи для любого поддерживаемого идентификатора языка:
+[Установите расширение (Marketplace.VisualStudio.com)](https://marketplace.visualstudio.com/items?itemName=lonberg.editor-button-run-task) и настройте задачи для любого поддерживаемого идентификатора языка:
 
 ![](assets/button-run-task-2.jpg)
 

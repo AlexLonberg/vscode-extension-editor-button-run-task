@@ -28,7 +28,7 @@
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Editor Button Run Task",
+      "title": "Editor Task Button",
       "properties": {
         "lonberg.editorButtonRunTask": {
           "markdownDescription": "Идентификаторы [поддерживаемых языков](https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers) сопоставленные с именами задач `\".vscode/tasks.json\"` и выполняемые при нажатии кнопки `▶ Run Task`.",
