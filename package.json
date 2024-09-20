@@ -1,0 +1,86 @@
+{
+  "name": "editor-button-run-task",
+  "displayName": "🚀 Editor Task Button",
+  "description": "Добавляет кнопку '▶ Run Task' запуска задач в заголовок редактора.",
+  "version": "0.1.0",
+  "author": "Alexander Lonberg <alexlonberg@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexLonberg/vscode-extension-editor-button-run-task.git"
+  },
+  "homepage": "https://github.com/AlexLonberg/vscode-extension-editor-button-run-task",
+  "license": "MIT",
+  "publisher": "lonberg",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "vscode",
+    "tasks"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Editor Button Run Task",
+      "properties": {
+        "lonberg.editorButtonRunTask": {
+          "markdownDescription": "Идентификаторы [поддерживаемых языков](https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers) сопоставленные с именами задач `\".vscode/tasks.json\"` и выполняемые при нажатии кнопки `▶ Run Task`.",
+          "type": "object",
+          "patternProperties": {
+            "^(plaintext|code\\-text\\-binary|Log|log|scminput|bat|clojure|coffeescript|jsonc|json|c|cpp|cuda\\-cpp|csharp|css|dart|diff|dockerfile|ignore|fsharp|git\\-commit|git\\-rebase|go|groovy|handlebars|hlsl|html|ini|properties|java|javascriptreact|javascript|jsx\\-tags|jsonl|snippets|julia|juliamarkdown|tex|latex|bibtex|cpp_embedded_latex|markdown_latex_combined|less|lua|makefile|markdown|markdown\\-math|wat|objective\\-c|objective\\-cpp|perl|raku|php|powershell|jade|python|r|razor|restructuredtext|ruby|rust|scss|search\\-result|shaderlab|shellscript|sql|swift|typescript|typescriptreact|vb|xml|xsl|dockercompose|yaml|raw|ssh_config)$": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "required": false,
+              "markdownDescription": "Имя задачи `\".vscode/tasks.json(label)\"` для выполнения при нажатии кнопки `▶ Run Task`."
+            }
+          }
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "lonberg.editorButtonRunTask.runTask",
+        "title": "\u00A0▶\u00A0Run\u00A0Task\u00A0",
+        "enablement": "!lonberg.editorButtonRunTask.disabled"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "lonberg.editorButtonRunTask.runTask",
+          "when": "editorLangId in lonberg.editorButtonRunTask.languages",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "vsix": "npx vsce package --out ./vsix/editor-button-run-task-0.1.0.vsix"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint": "^9.9.1",
+    "typescript": "^5.5.4",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
